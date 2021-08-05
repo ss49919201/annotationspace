@@ -1,4 +1,4 @@
-module github.com/s-beats/anotationspace
+module github.com/s-beats/annotationspace
 
 go 1.16
 

@@ -1,4 +1,4 @@
-package anotationspace
+package annotationspace
 
 import (
 	"go/ast"
@@ -9,7 +9,7 @@ import (
 )
 
 var Analyzer = &analysis.Analyzer{
-	Name: "anotation-space",
+	Name: "annotation-space",
 	Doc:  Doc,
 	Run:  run,
 	Requires: []*analysis.Analyzer{
@@ -17,7 +17,7 @@ var Analyzer = &analysis.Analyzer{
 	},
 }
 
-const Doc = "anotation-space is ..."
+const Doc = "annotation-space is ..."
 
 func run(pass *analysis.Pass) (interface{}, error) {
 	inspect := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
