@@ -2,11 +2,36 @@ package annotationspace
 
 import (
 	"go/ast"
+	"strings"
 
 	"golang.org/x/tools/go/analysis"
 	"golang.org/x/tools/go/analysis/passes/inspect"
 	"golang.org/x/tools/go/ast/inspector"
 )
+
+type annotation int
+
+const (
+	TODO annotation = iota
+	FIXME
+	NOTE
+	REFUCTOR
+)
+
+func (a annotation) String() string {
+	switch a {
+	case TODO:
+		return "TODO:"
+	case FIXME:
+		return "FIXME:"
+	case NOTE:
+		return "NOTE:"
+	case REFUCTOR:
+		return "REFUCTOR:"
+	default:
+		panic("not decleare")
+	}
+}
 
 var Analyzer = &analysis.Analyzer{
 	Name: "annotation-space",
@@ -33,7 +58,16 @@ func run(pass *analysis.Pass) (interface{}, error) {
 				for _, v := range n.Comments {
 					if v.List != nil {
 						for _, v := range n.Comments {
-							println(v.Text() == "TODO:\n")
+							switch {
+							case strings.Contains(v.Text(), TODO.String()):
+								println("hit")
+							case strings.Contains(v.Text(), TODO.String()):
+								println("hit")
+							case strings.Contains(v.Text(), TODO.String()):
+								println("hit")
+							case strings.Contains(v.Text(), TODO.String()):
+								println("hit")
+							}
 						}
 					}
 				}
