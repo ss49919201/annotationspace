@@ -34,7 +34,7 @@ func (a annotation) String() string {
 }
 
 var Analyzer = &analysis.Analyzer{
-	Name: "annotation-space",
+	Name: "annotationspace",
 	Doc:  Doc,
 	Run:  run,
 	Requires: []*analysis.Analyzer{
