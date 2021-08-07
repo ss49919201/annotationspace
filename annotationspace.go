@@ -42,7 +42,7 @@ var Analyzer = &analysis.Analyzer{
 	},
 }
 
-const Doc = "annotation-space is ..."
+const Doc = "annotationspace is ..."
 
 func run(pass *analysis.Pass) (interface{}, error) {
 	inspect := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
