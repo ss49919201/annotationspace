@@ -55,19 +55,17 @@ func run(pass *analysis.Pass) (interface{}, error) {
 		switch n := n.(type) {
 		case *ast.File:
 			if n.Comments != nil {
-				for _, v := range n.Comments {
-					if v.List != nil {
-						for _, v := range n.Comments {
-							switch {
-							case strings.Contains(v.Text(), TODO.String()):
-								println("hit")
-							case strings.Contains(v.Text(), TODO.String()):
-								println("hit")
-							case strings.Contains(v.Text(), TODO.String()):
-								println("hit")
-							case strings.Contains(v.Text(), TODO.String()):
-								println("hit")
-							}
+				for _, c := range n.Comments {
+					if c.List != nil {
+						switch {
+						case strings.Contains(c.Text(), TODO.String()) && !strings.Contains(c.Text(), TODO.String()+" "):
+							pass.Reportf(c.Pos(), "require whitespace after TODO:")
+						case strings.Contains(c.Text(), FIXME.String()) && !strings.Contains(c.Text(), FIXME.String()+" "):
+							pass.Reportf(c.Pos(), "require whitespace after FIXME:")
+						case strings.Contains(c.Text(), NOTE.String()) && !strings.Contains(c.Text(), NOTE.String()+" "):
+							pass.Reportf(c.Pos(), "require whitespace after NOTE:")
+						case strings.Contains(c.Text(), REFUCTOR.String()) && !strings.Contains(c.Text(), REFUCTOR.String()+" "):
+							pass.Reportf(c.Pos(), "require whitespace after REFUCTOR:")
 						}
 					}
 				}
