@@ -34,7 +34,7 @@ func (a annotation) String() string {
 }
 
 var Analyzer = &analysis.Analyzer{
-	Name: "annotation-space",
+	Name: "annotationspace",
 	Doc:  Doc,
 	Run:  run,
 	Requires: []*analysis.Analyzer{
@@ -42,7 +42,7 @@ var Analyzer = &analysis.Analyzer{
 	},
 }
 
-const Doc = "annotation-space is ..."
+const Doc = "annotationspace is ..."
 
 func run(pass *analysis.Pass) (interface{}, error) {
 	inspect := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
