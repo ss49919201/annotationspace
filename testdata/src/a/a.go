@@ -17,4 +17,12 @@ func main() {
 	println("test")
 	// REFUCTOR:REFUCTOR
 	println("test")
+	// TODO
+	println("test")
+	// FIXME
+	println("test")
+	// NOTE
+	println("test")
+	// REFUCTOR
+	println("test")
 }
