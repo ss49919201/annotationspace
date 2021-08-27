@@ -9,7 +9,7 @@ import (
 	"golang.org/x/tools/go/ast/inspector"
 )
 
-type annotation int
+type Annotation int
 
 const (
 	colon      = ":"
@@ -17,24 +17,31 @@ const (
 )
 
 const (
-	TODO annotation = iota
+	TODO Annotation = iota
 	FIXME
 	NOTE
-	REFUCTOR
+	REFACTOR
 )
 
-func (a annotation) String() string {
+const (
+	todo     = "TODO"
+	fixme    = "FIXME"
+	note     = "NOTE"
+	refactor = "REFACTOR"
+)
+
+func (a Annotation) String() string {
 	switch a {
 	case TODO:
-		return "TODO"
+		return todo
 	case FIXME:
-		return "FIXME"
+		return fixme
 	case NOTE:
-		return "NOTE"
-	case REFUCTOR:
-		return "REFUCTOR"
+		return note
+	case REFACTOR:
+		return refactor
 	default:
-		panic("not decleare")
+		panic("not declare")
 	}
 }
 
@@ -70,8 +77,8 @@ func run(pass *analysis.Pass) (interface{}, error) {
 							pass.Reportf(c.Pos(), "require whitespace after FIXME:")
 						case strings.Contains(c.Text(), NOTE.String()+colon) && !strings.Contains(c.Text(), NOTE.String()+colon+whitespace):
 							pass.Reportf(c.Pos(), "require whitespace after NOTE:")
-						case strings.Contains(c.Text(), REFUCTOR.String()+colon) && !strings.Contains(c.Text(), REFUCTOR.String()+colon+whitespace):
-							pass.Reportf(c.Pos(), "require whitespace after REFUCTOR:")
+						case strings.Contains(c.Text(), REFACTOR.String()+colon) && !strings.Contains(c.Text(), REFACTOR.String()+colon+whitespace):
+							pass.Reportf(c.Pos(), "require whitespace after REFACTOR:")
 						}
 						// check colon
 						switch {
@@ -81,8 +88,8 @@ func run(pass *analysis.Pass) (interface{}, error) {
 							pass.Reportf(c.Pos(), "require colon after FIXME")
 						case strings.Contains(c.Text(), NOTE.String()) && !strings.Contains(c.Text(), NOTE.String()+colon):
 							pass.Reportf(c.Pos(), "require colon after NOTE")
-						case strings.Contains(c.Text(), REFUCTOR.String()) && !strings.Contains(c.Text(), REFUCTOR.String()+colon):
-							pass.Reportf(c.Pos(), "require colon after REFUCTOR")
+						case strings.Contains(c.Text(), REFACTOR.String()) && !strings.Contains(c.Text(), REFACTOR.String()+colon):
+							pass.Reportf(c.Pos(), "require colon after REFACTOR")
 						}
 					}
 				}

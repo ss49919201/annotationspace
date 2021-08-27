@@ -7,7 +7,7 @@ func main() {
 	println("test")
 	// NOTE: NOTE
 	println("test")
-	// REFUCTOR: REFUCTOR
+	// REFACTOR: REFACTOR
 	println("test")
 	// TODO:TODO
 	println("test")
@@ -15,7 +15,7 @@ func main() {
 	println("test")
 	// NOTE:NOTE
 	println("test")
-	// REFUCTOR:REFUCTOR
+	// REFACTOR:REFACTOR
 	println("test")
 	// TODO
 	println("test")
@@ -23,6 +23,6 @@ func main() {
 	println("test")
 	// NOTE
 	println("test")
-	// REFUCTOR
+	// REFACTOR
 	println("test")
 }
